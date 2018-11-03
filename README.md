@@ -28,7 +28,6 @@ Supported networks are `mainnet` all calls should start with the network you wan
 
 ## Accounts
 - Get account balance from address: 
-```
 `$curl -X GET "127.0.0.1:8080/mainnet/account/$ADDRESS"`
 - Create account from passphrase: `POST /:network/account` params: `passphrase`
 - Create (or get if already existing) account and encrypt using bip38: `POST /:network/account/bip38` params: `bip38` (password for encrypted WIF), `userid` (to identify a user)
