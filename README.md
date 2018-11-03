@@ -27,8 +27,7 @@ docker run -d -p 8080:8080 qredit-rpc --allow-remote
 Supported networks are `mainnet` all calls should start with the network you want to address, for instance,  `/mainnet/account/QUDud8tvyVZa67p3QY7XPRUTjRGnWQQ9Xv`.
 
 ## Accounts
-- Get account balance from address: `GET /mainnet/account/$ADDRESS`
-example:  `$curl -X GET "127.0.0.1:8080/mainnet/account/$ADDRESS"`
+- Get account balance from address: `$curl -X GET "127.0.0.1:8080/mainnet/account/$ADDRESS"`
 - Create account from `passphrase`: `POST /:network/account` params: `passphrase`
 - Create (or get if already existing) account and encrypt using bip38: `POST /:network/account/bip38` params: `bip38` (password for encrypted WIF), `userid` (to identify a user)
 - Get backup from `userid`: `GET /:network/account/bip38/:userid`
