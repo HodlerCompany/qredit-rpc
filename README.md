@@ -23,9 +23,6 @@ You will need to run the container with the `--allow-remote` option to allow the
 docker run -d -p 8080:8080 qredit-rpc --allow-remote
 ```
 
-# API
-Supported networks are `mainnet` all calls should start with the network you want to address, for instance,  `/mainnet/account/QUDud8tvyVZa67p3QY7XPRUTjRGnWQQ9Xv`.
-
 ## Accounts
 - Get account balance from address: 
 ```
@@ -39,7 +36,7 @@ $curl -X POST "127.0.0.1:8080/mainnet/account" --data "passphrase=$PASSPHRASE"
 
 - Create (or get if already existing) account and encrypt using bip38: (params: `bip38` (password for encrypted WIF), `userid` (to identify a user))
 ```
-$curl -X POST "127.0.0.1:8080/mainnet/account/bip38" --data "bip38=$BIP38" --data "userid=$USERID"
+$curl -X POST "127.0.0.1:8080/mainnet/account/bip38" --data "bip38=$BIP38&userid=$USERID"
 ```
 
 - Get backup from userid:
@@ -50,10 +47,25 @@ $curl -X GET "127.0.0.1:8080/mainnet/account/bip38/$USERID"
 If you want to create several accounts for one user, you need to use a different userid.
 
 ## Transactions
-- Get last 50 transactions from `address`: `GET /:network/transactions/:address`
-- Create a transaction: `POST /:network/transaction` params: `recipientId`, `amount` in satoshis, `passphrase`
-- Create a transaction using `bip38` for `userid`: `POST /:network/transaction/bip38` params: `recipientId`, `amount` in satoshis, `bip38` (password to encode wif), `userid`
+- Get last 50 transactions from address:
+```
+$curl -X GET "127.0.0.1:8080/mainnet/transactions/$ADDRESS"
+```
+
+- Create a transaction:  (params: `recipientId`, `amount` in satoshis, `passphrase`)
+```
+$curl -X POST "127.0.0.1:8080/mainnet/transaction/" --data "recipientId=$RECIPIENTID&amount=$AMOUNT$passphrase=$PASSPHRASE"
+```
+
+- Create a transaction using `bip38` for `userid`: (params: `recipientId`, `amount` in satoshis, `bip38` (password to encode wif), `userid`)
+```
+$curl -X POST "127.0.0.1:8080/mainnet/transaction/bip38" --data "recipientId=$RECIPIENTID&amount=$AMOUNT$bip38=$BIP38$userid=USERID"
+```
+
 - Broadcast transaction: `POST /:network/broadcast` params: `id` of the transaction
+```
+$curl -X POST "127.0.0.1:8080/mainnet/broadcast" --data "id=$ID"
+```
 
 Note that if the transaction has been created via the RPC it has been stored internally, as such only the transaction `id` is needed to broadcast/rebroadcast it. Otherwise if created outside of this RPC server, pass the whole transaction body as the POST payload.
 
