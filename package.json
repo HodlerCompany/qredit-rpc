@@ -1,0 +1,46 @@
+{
+  "name": "qredit-rpc",
+  "version": "1.0.0",
+  "description": "RPC server acting as lite client for Qredit blockchain",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "nodemon ./server.js"
+  },
+  "bin": {
+    "qredit-rpc": "./server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HodlerCompany/qredit-rpc.git"
+  },
+  "keywords": [
+    "qredit",
+    "blockchain",
+    "rpc"
+  ],
+  "author": "Nayiem Willems",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HodlerCompany/qredit-rpc/issues"
+  },
+  "homepage": "https://github.com/HodlerCompany/qredit-rpc#readme",
+  "dependencies": {
+    "qreditjs": "github:HodlerCompany/qredit-js#master",
+    "async": "^2.6.0",
+    "bigi": "^1.4.2",
+    "bip38": "^2.0.2",
+    "bip39": "^2.5.0",
+    "commander": "^2.15.1",
+    "leveldown": "^2.1.1",
+    "levelup": "^2.0.2",
+    "request": "^2.85.0",
+    "restify": "^6.4.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.17.3"
+  }
+}
