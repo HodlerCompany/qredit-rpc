@@ -62,7 +62,7 @@ $curl -X POST "127.0.0.1:8080/mainnet/transaction/" --data "recipientId=$RECIPIE
 $curl -X POST "127.0.0.1:8080/mainnet/transaction/bip38" --data "recipientId=$RECIPIENTID&amount=$AMOUNT$bip38=$BIP38$userid=USERID"
 ```
 
-- Broadcast transaction: `POST /:network/broadcast` params: `id` of the transaction
+- Broadcast transaction: (params: `id` of the transaction)
 ```
 $curl -X POST "127.0.0.1:8080/mainnet/broadcast" --data "id=$ID"
 ```
