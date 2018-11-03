@@ -28,7 +28,9 @@ Supported networks are `mainnet` all calls should start with the network you wan
 
 ## Accounts
 - Get account balance from address: 
-`$curl -X GET "127.0.0.1:8080/mainnet/account/$ADDRESS"`
+```
+$curl -X GET "127.0.0.1:8080/mainnet/account/$ADDRESS"
+```
 
 - Create account from passphrase:
 `$curl -X POST "127.0.0.1:8080/mainnet/account" --data "passphrase=$PASSPHRASE"`
