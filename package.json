@@ -1,5 +1,5 @@
 {
-  "name": "qredit-rpc-server",
+  "name": "qredit-rpc",
   "version": "1.0.0",
   "description": "RPC server acting as lite client for Qredit blockchain",
   "main": "server.js",
