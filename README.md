@@ -10,7 +10,8 @@ If you do want to allow access from all remotes, start qredit-rpc with the `--al
 - install Node.JS ( https://nodejs.org/en/download/package-manager/)
 - install forever `npm install -g forever`
 - install qredit-rpc: `npm install HodlerCompany/qredit-rpc#master`
-- start RPC server: `qredit-rpc --port 8000` (default port is 8080)
+- start RPC server: `node server.js --port 8000` (default port is 8080)
+- start RPC with remote server: `node server.js --port 8000 --allow-remote --allow 123.123.123.123`
 
 ## Docker ##
 If you would like to run from a docker environment, you will first need to build the container by running:
@@ -23,10 +24,11 @@ docker run -d -p 8080:8080 qredit-rpc --allow-remote
 ```
 
 # API
-Supported networks are `mainnet` all calls should start with the network you want to address, for instance,  `/mainnet/account/QUDud8tvyVZa67p3QY7XPRUTjRGnWQQ9Xv` we call it `:network` in the API description.
+Supported networks are `mainnet` all calls should start with the network you want to address, for instance,  `/mainnet/account/QUDud8tvyVZa67p3QY7XPRUTjRGnWQQ9Xv`.
 
 ## Accounts
-- Get account balance from `address`: `GET /:network/account/:address`
+- Get account balance from address: `GET /mainnet/account/$ADDRESS`
+example:  `$curl -X GET "127.0.0.1:8080/mainnet/account/$ADDRESS"`
 - Create account from `passphrase`: `POST /:network/account` params: `passphrase`
 - Create (or get if already existing) account and encrypt using bip38: `POST /:network/account/bip38` params: `bip38` (password for encrypted WIF), `userid` (to identify a user)
 - Get backup from `userid`: `GET /:network/account/bip38/:userid`
