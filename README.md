@@ -32,11 +32,20 @@ Supported networks are `mainnet` all calls should start with the network you wan
 $curl -X GET "127.0.0.1:8080/mainnet/account/$ADDRESS"
 ```
 
-- Create account from passphrase:
-`$curl -X POST "127.0.0.1:8080/mainnet/account" --data "passphrase=$PASSPHRASE"`
+- Create account from passphrase: (params: `passphrase`)
+```
+$curl -X POST "127.0.0.1:8080/mainnet/account" --data "passphrase=$PASSPHRASE"
+```
 
-- Create (or get if already existing) account and encrypt using bip38: `POST /:network/account/bip38` params: `bip38` (password for encrypted WIF), `userid` (to identify a user)
-- Get backup from `userid`: `GET /:network/account/bip38/:userid`
+- Create (or get if already existing) account and encrypt using bip38: (params: `bip38` (password for encrypted WIF), `userid` (to identify a user))
+```
+$curl -X POST "127.0.0.1:8080/mainnet/account/bip38" --data "bip38=$BIP38" --data "userid=$USERID"
+```
+
+- Get backup from userid:
+```
+$curl -X GET "127.0.0.1:8080/mainnet/account/bip38/$USERID"
+```
 
 If you want to create several accounts for one user, you need to use a different userid.
 
